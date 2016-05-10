@@ -14,11 +14,24 @@ class TodosController < ApplicationController
     end
   end
 
+  def create
+    todo = Todo.new(todo_params)
+    if todo.save
+      render json: {result: 'success'}
+    else
+      render json: {result: 'failure', errors: todo.errors.full_messages.join(', ')}
+    end
+  end
+
 
   private
 
   def todo_completed_params
     params.permit(:completed, :id)
+  end
+
+  def todo_params
+    params.require(:todo).permit(:text)
   end
 
 end

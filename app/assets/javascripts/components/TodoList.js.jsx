@@ -34,9 +34,23 @@ const TodoList = React.createClass({
 
   render: function () {
     return (
-        <div className="list-group">
-          {this.todoListItems()}
+        <div>
+          
+          <NewTodoForm getTodoListItems={this.getTodoListItems} />
+          
+          <div className="panel panel-info">
+            <div className="panel-heading">
+              <h3 className="panel-title">Todo List</h3>
+            </div>
+            <div className="panel-body">
+              <div className="list-group">
+                {this.todoListItems()}
+              </div>
+            </div>
+          </div>
+          
         </div>
+
       );
   }
 })
